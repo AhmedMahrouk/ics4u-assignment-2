@@ -1,31 +1,49 @@
 <!doctype html>
 <html lang="en">
-  <head>
+<head>
+    <meta charset="UTF-8">
+    <title>Cubic Equation Solver</title>
+    <link rel="stylesheet" href="style.css">
+    <script type="module" src="./main.ts"></script>
+</head>
 
-  
-  </head>
+
   <body>
-    <form>
-    <div id="a"></div>
-    <label>Value-A</label>
-    <input id="a" required>
-    <label>Value-B<label>
-    <input id="b" required>
-    <label>Value-C</label>
-    <input id="c" required>
-    <label>Value-D</label>
-    <input id="d" required>
-    <button>Solve</button>
-    </form>
+  <form id="solverForm">
+    <label for="a">Value-A</label>
+    <input type="number" id="a" required>
 
-    <div>
+    <label for="b">Value-B</label>
+    <input type="number" id="b" required>
+
+    <label for="c">Value-C</label>
+    <input type="number" id="c" required>
+
+    <label for="d">Value-D</label>
+    <input type="number" id="d" required>
+
+    <button type="button">Solve</button>
+  </form>
+
+  <div class="outputGroup">
     <label>Root-1</label>
     <input id="Value-1" readonly>
+
     <label>Root-2</label>
     <input id="Value-2" readonly>
+
     <label>Root-3</label>
     <input id="Value-3" readonly>
-    </div>
-    <script type="module" src="/src/main.ts"></script>
+
+    <label>p</label>
+    <input id="p" readonly>
+
+    <label>q</label>
+    <input id="q" readonly>
+
+    <label>Discriminant</label>
+    <input id="Disciminant" readonly>
+  </div>
+    <canvas id="graph" width="600" height="400"></canvas>
   </body>
 </html>

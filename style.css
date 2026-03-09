@@ -1,0 +1,113 @@
+/* 1. Global Setup with a soft, neutral background */
+body {
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    background-color: #f0f4f8; /* Soft blue-grey */
+    color: #334e68; /* Slate blue text */
+    margin: 0;
+    padding: 30px;
+    display: flex;
+    flex-direction: column; /* Stack Top (form) and Bottom (content) */
+    align-items: center;
+}
+
+/* 2. Top Bar: Horizontal Inputs */
+#solverForm {
+    display: flex;
+    flex-direction: row; 
+    flex-wrap: wrap; /* Wraps neatly on smaller screens */
+    justify-content: center;
+    align-items: flex-end;
+    gap: 20px;
+    background: #ffffff;
+    padding: 20px 40px;
+    border-radius: 15px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    margin-bottom: 40px;
+    border: 1px solid #d9e2ec;
+}
+
+#solverForm label {
+    display: block;
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: #627d98;
+    margin-bottom: 6px;
+    text-transform: uppercase;
+}
+
+#solverForm input {
+    width: 90px;
+    padding: 10px;
+    border: 2px solid #bcccdc;
+    border-radius: 8px;
+    background-color: #f5f7fa;
+    color: #102a43;
+    transition: all 0.2s ease;
+}
+
+#solverForm input:focus {
+    outline: none;
+    border-color: #627d98;
+    background-color: #fff;
+}
+
+/* The Solve Button */
+button {
+    background-color: #486581; /* Muted slate blue */
+    color: white;
+    border: none;
+    padding: 12px 30px;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+button:hover {
+    background-color: #334e68;
+}
+
+/* 3. The Lower Section: Side-by-Side Logic */
+/* Since we aren't changing HTML, we style the body to handle the siblings */
+.outputGroup, #graph {
+    display: inline-block; /* Allows them to sit side-by-side */
+    vertical-align: top;
+}
+
+/* Result Container */
+.outputGroup {
+    display: grid;
+    grid-template-columns: 120px 180px;
+    gap: 12px;
+    background: #ffffff;
+    padding: 25px;
+    border-radius: 15px;
+    margin-right: 30px; /* Space between results and graph */
+    border: 1px solid #d9e2ec;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.outputGroup label {
+    font-size: 0.85rem;
+    align-self: center;
+    color: #486581;
+}
+
+.outputGroup input[readonly] {
+    background-color: #f0f4f8;
+    border: 1px solid #d9e2ec;
+    border-radius: 6px;
+    padding: 8px;
+    color: #243b53;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
+    text-align: right;
+}
+
+/* 4. The Graph */
+#graph {
+    background: #ffffff;
+    border: 1px solid #d9e2ec;
+    border-radius: 15px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+}

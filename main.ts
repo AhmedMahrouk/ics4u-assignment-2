@@ -9,14 +9,13 @@ solveBtn?.addEventListener("click", (event) => {
     const c = Number((document.getElementById('c') as HTMLInputElement).value);
     const d = Number((document.getElementById('d') as HTMLInputElement).value);
 
-    // Prevent division by zero
     if (a === 0) return;
 
-    // Calculate p and q
+    
     const p = (3 * a * c - b ** 2) / (3 * a ** 2);
     const q = (27 * a ** 2 * d - 9 * a * b * c + 2 * b ** 3) / (27 * a ** 3);
 
-    // Calculate discriminant
+    
     const discriminant = (q / 2) * (q/2) + (p / 3) * (p / 3) * (p / 3);
 
     (document.getElementById('p') as HTMLInputElement).value = String(p);
@@ -28,7 +27,7 @@ solveBtn?.addEventListener("click", (event) => {
     let r3: string | number = "Complex";
 
     if (discriminant < 0) {
-        // Case A: Three distinct real roots
+        
         const r = 2 * Math.sqrt(-p / 3);
         
         let ratio = -q / (2 * Math.sqrt(-1 * (p / 3) ** 3));
@@ -42,7 +41,7 @@ solveBtn?.addEventListener("click", (event) => {
         r3 = r * Math.cos((phi + 4 * Math.PI) / 3) - b / (3 * a);
     } 
     else if (discriminant > 0) {
-        // Case B: One real root
+        
         const uVal = -q / 2 + Math.sqrt(discriminant);
         const vVal = -q / 2 - Math.sqrt(discriminant);
 
@@ -52,7 +51,7 @@ solveBtn?.addEventListener("click", (event) => {
         r1 = u + v - b / (3 * a);
     } 
     else {
-        // Case C: Real roots with double/triple roots
+        
         if (p === 0 && q === 0) {
             r1 = r2 = r3 = -b / (3 * a);
         } else {
@@ -64,12 +63,10 @@ solveBtn?.addEventListener("click", (event) => {
         }
     }
 
-    // Update the UI Text Inputs
     (document.getElementById('Value-1') as HTMLInputElement).value = String(r1);
     (document.getElementById('Value-2') as HTMLInputElement).value = String(r2);
     (document.getElementById('Value-3') as HTMLInputElement).value = String(r3);
 
-    // --- Graphing Logic ---
     const canvas = document.getElementById('graph') as HTMLCanvasElement;
     const ctx = canvas.getContext('2d');
 
@@ -80,16 +77,14 @@ solveBtn?.addEventListener("click", (event) => {
         const centerY = height / 2;
         const scale = 20;
 
-        // 1. Clear and Draw Grid
         ctx.clearRect(0, 0, width, height);
         ctx.strokeStyle = '#ddd';
         ctx.lineWidth = 1;
         ctx.beginPath();
-        ctx.moveTo(0, centerY); ctx.lineTo(width, centerY); // X-axis
-        ctx.moveTo(centerX, 0); ctx.lineTo(centerX, height); // Y-axis
+        ctx.moveTo(0, centerY); ctx.lineTo(width, centerY);
+        ctx.moveTo(centerX, 0); ctx.lineTo(centerX, height);
         ctx.stroke();
 
-        // 2. Draw the Cubic Curve
         ctx.strokeStyle = '#2563eb';
         ctx.lineWidth = 2;
         ctx.beginPath();
@@ -109,18 +104,16 @@ solveBtn?.addEventListener("click", (event) => {
         }
         ctx.stroke();
 
-        // 3. Draw Purple Dots for X-Intercepts (Roots)
         const roots = [r1, r2, r3];
-        ctx.fillStyle = '#a855f7'; // Purple
+        ctx.fillStyle = '#a855f7';
 
         roots.forEach(root => {
             const val = Number(root);
-            // Only draw if the value is a valid number (not "Complex")
+
             if (!isNaN(val)) {
                 const dotX = centerX + (val * scale);
                 const dotY = centerY;
 
-                // Ensure the dot is actually within the canvas width
                 if (dotX >= 0 && dotX <= width) {
                     ctx.beginPath();
                     ctx.arc(dotX, dotY, 5, 0, Math.PI * 2);
@@ -129,7 +122,6 @@ solveBtn?.addEventListener("click", (event) => {
             }
         });
 
-        // 4. Update Equation Title
         const equationH2 = document.getElementById('equation');
         if (equationH2) {
             equationH2.innerText = `${a}x³ + ${b}x² + ${c}x + ${d} = 0`;
